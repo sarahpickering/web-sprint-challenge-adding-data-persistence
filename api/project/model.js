@@ -28,4 +28,7 @@ async function addProjects(project) {
        return newProject; 
 }
 
-module.exports = { getProjects, addProjects }
+module.exports = { 
+    getProjects, 
+    addProjects 
+}
