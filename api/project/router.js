@@ -1,1 +1,26 @@
-// build your `/api/projects` router here
+const express = require('express')
+const Schemes = require('./model')
+
+const router = express.Router()
+
+
+router.get("/", async (req, res, next) => {
+  Schemes.getProjects()
+    .then((project) => {
+      res.json(project);
+    })
+    .catch(next);
+});
+
+router.post("/", async (req, res, next) => {
+  const project = req.body;
+  await Schemes.addProject(project)
+    .then((project) => {
+      res.status(201).json(project);
+    })
+    .catch(next);
+});
+
+module.exports = router
+
+//building API so that my local info can get & post info off prem
