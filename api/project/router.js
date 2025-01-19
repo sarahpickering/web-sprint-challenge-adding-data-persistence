@@ -1,11 +1,11 @@
 const express = require('express')
-const Schemes = require('./model')
+const Project = require('./model')
 
 const router = express.Router()
 
 
 router.get("/", async (req, res, next) => {
-  Schemes.getProjects()
+  Project.getProjects()
     .then((project) => {
       res.json(project);
     })
@@ -14,7 +14,7 @@ router.get("/", async (req, res, next) => {
 
 router.post("/", async (req, res, next) => {
   const project = req.body;
-  await Schemes.addProject(project)
+  await Project.addProject(project)
     .then((project) => {
       res.status(201).json(project);
     })
